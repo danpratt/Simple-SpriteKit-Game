@@ -56,10 +56,12 @@ struct PhysicsCategory {
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     let player = SKSpriteNode(imageNamed: "player")
+    let background = SKSpriteNode(imageNamed: "gameBackground")
     var monstersDestroyed = 0
     
     override func didMove(to view: SKView) {
-        backgroundColor = SKColor.lightGray
+        background.position = CGPoint(x: frame.size.width / 2, y: frame.size.height / 2)
+        addChild(background)
         player.position = CGPoint(x: size.width * 0.1, y: size.height * 0.5)
         
         addChild(player)
