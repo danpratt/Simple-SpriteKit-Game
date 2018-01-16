@@ -9,6 +9,42 @@
 import SpriteKit
 import GameplayKit
 
+// Overloads
+
+func + (left: CGPoint, right: CGPoint) -> CGPoint {
+    return CGPoint(x: left.x + right.x, y: left.y + right.y)
+}
+
+func - (left: CGPoint, right: CGPoint) -> CGPoint {
+    return CGPoint(x: left.x - right.x, y: left.y - right.y)
+}
+
+func * (point: CGPoint, scalar: CGFloat) -> CGPoint {
+    return CGPoint(x: point.x * scalar, y: point.y * scalar)
+}
+
+func / (point: CGPoint, scalar: CGFloat) -> CGPoint {
+    return CGPoint(x: point.x / scalar, y: point.y / scalar)
+}
+
+#if !(arch(x86_64) || arch(arm64))
+    func sqrt(a: CGFloat) -> CGFloat {
+        return CGFloat(sqrtf(Float(a)))
+    }
+#endif
+
+extension CGPoint {
+    
+    func length() -> CGFloat {
+        return sqrt(x*x + y*y)
+    }
+    
+    func normalized() -> CGPoint {
+        return self / length()
+    }
+    
+}
+
 class GameScene: SKScene {
     let player = SKSpriteNode(imageNamed: "player")
     
@@ -54,4 +90,42 @@ class GameScene: SKScene {
         let actionMoveDone = SKAction.removeFromParent()
         monster.run(SKAction.sequence([actionMove, actionMoveDone]))
     }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        // Choose one of the thouches to work with
+        guard let touch = touches.first else {
+            return
+        }
+        
+        let touchlocation = touch.location(in: self)
+        
+        // setup throwing star image and initial position
+        let throwingStar = SKSpriteNode(imageNamed: "projectile")
+        throwingStar.position = player.position
+        
+        // setup offset
+        let offset = touchlocation - throwingStar.position
+        
+        // don't throw backwards
+        if offset.x < 0 { return }
+        
+        // add the throwing star to the scene
+        addChild(throwingStar)
+        
+        // get direction of where to shoot
+        let direction = offset.normalized()
+        
+        // make sure it goes far enough to leave the screen
+        let shootAmount = direction * 1000
+        
+        // add the shoot amount to the current position
+        let realDest = shootAmount + throwingStar.position
+        
+        // create the action
+        let actionMove = SKAction.move(to: realDest, duration: 2.0)
+        let actionDone = SKAction.removeFromParent()
+        throwingStar.run(SKAction.sequence([actionMove, actionDone]))
+        
+    }
+    
 }
