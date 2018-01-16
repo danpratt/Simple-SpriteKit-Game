@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		657C1132200D96F200E53AE0 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657C1131200D96F200E53AE0 /* GameOverScene.swift */; };
 		65D43A792009B31000366942 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D43A782009B31000366942 /* AppDelegate.swift */; };
 		65D43A7F2009B31000366942 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D43A7E2009B31000366942 /* GameScene.swift */; };
 		65D43A812009B31000366942 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D43A802009B31000366942 /* GameViewController.swift */; };
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		657C1131200D96F200E53AE0 /* GameOverScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
 		65D43A752009B31000366942 /* Simple SpriteKit Game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Simple SpriteKit Game.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		65D43A782009B31000366942 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		65D43A7E2009B31000366942 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 			children = (
 				65D43A782009B31000366942 /* AppDelegate.swift */,
 				65D43A7E2009B31000366942 /* GameScene.swift */,
+				657C1131200D96F200E53AE0 /* GameOverScene.swift */,
 				65D43A802009B31000366942 /* GameViewController.swift */,
 				65D43A822009B31000366942 /* Main.storyboard */,
 				65D43A852009B31000366942 /* Assets.xcassets */,
@@ -280,6 +283,7 @@
 			files = (
 				65D43A7F2009B31000366942 /* GameScene.swift in Sources */,
 				65D43A812009B31000366942 /* GameViewController.swift in Sources */,
+				657C1132200D96F200E53AE0 /* GameOverScene.swift in Sources */,
 				65D43A792009B31000366942 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
