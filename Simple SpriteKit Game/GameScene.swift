@@ -61,7 +61,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func didMove(to view: SKView) {
         background.position = CGPoint(x: frame.size.width / 2, y: frame.size.height / 2)
-        background.zPosition = 0
+        background.zPosition = -13
         addChild(background)
         player.position = CGPoint(x: size.width * 0.1, y: size.height * 0.5)
         
